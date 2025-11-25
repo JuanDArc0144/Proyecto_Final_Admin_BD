@@ -8,92 +8,84 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1 class="logo">JUANRRY</h1>
-            <h2 class="subtitle">Sistema para la Bodega de un Inventario</h2>
-        </header>
-        
-        <section class="features">
-            <div class="feature-card">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Seguridad Avanzada</h3>
-                <p>Protección de datos empresariales con encriptación de nivel empresarial</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-users-cog"></i>
-                <h3>Gestión Multirrol</h3>
-                <p>Control de acceso basado en roles para administradores, gerentes y empleados</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-database"></i>
-                <h3>Respaldos Automáticos</h3>
-                <p>Sistema de backup y recuperación de datos en tiempo real</p>
-            </div>
-        </section>
-        
-        <div class="content-wrapper">
-            <section class="login-section">
-                <div class="login-container">
-                    <h2>Iniciar Sesión</h2>
-                    <p class="login-subtitle">Accede al sistema de gestión JUANRRY</p>
-                    
-                    <form class="login-form" id="loginForm">
-                    <div class="form-group">
-                        <label for="username">Usuario</label>
-                        <input type="text" id="username" placeholder="Ingresa tu usuario" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="password">Contraseña</label>
-                        <input type="password" id="password" placeholder="Ingresa tu contraseña" required>
-                    </div>
-                    
-                    <button type="submit" class="login-btn">Iniciar Sesión</button>
-                    
-                    <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
-                </form>
-                                </div>
-            </section>
-            
-            <section class="demo-section">
-                <div class="demo-container">
-                    <h3>Credenciales de demostración:</h3>
-                    <div class="credentials">
-                        <div class="user-type">
-                            <div class="user-icon">
-                                <i class="fas fa-user-shield"></i>
-                            </div>
-                            <h4>Admin</h4>
-                            <p>admin</p>
+    <div class="two-column-layout">
+        <!-- Columna Izquierda - Información del Sistema -->
+        <div class="left-column">
+            <div class="system-info">
+                <header class="header">
+                    <h1 class="logo">JUANRRY</h1>
+                    <h2 class="subtitle">Sistema para la Bodega de un Inventario</h2>
+                </header>
+                
+                <section class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
                         </div>
-                        <div class="user-type">
-                            <div class="user-icon">
-                                <i class="fas fa-user-tie"></i>
-                            </div>
-                            <h4>Gerente</h4>
-                            <p>manager1</p>
-                        </div>
-                        <div class="user-type">
-                            <div class="user-icon">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <h4>Empleado</h4>
-                            <p>employee1</p>
+                        <div class="feature-content">
+                            <h3>Seguridad Avanzada</h3>
+                            <p>Protección de datos empresariales con encriptación de nivel empresarial</p>
                         </div>
                     </div>
-                    <div class="password-info">
-                        <i class="fas fa-key"></i>
-                        <span>Contraseña: demo123</span>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Gestión Multirrol</h3>
+                            <p>Control de acceso basado en roles para administradores, gerentes y empleados</p>
+                        </div>
                     </div>
-                </div>
-            </section>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Respaldos Automáticos</h3>
+                            <p>Sistema de backup y recuperación de datos en tiempo real</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
-        
-        <footer class="footer">
-            <p>&copy; 2025 JUANRRY-Todos los derechos reservados.</p>
-        </footer>
+
+        <!-- Columna Derecha - Login y Credenciales -->
+        <div class="right-column">
+            <div class="auth-section">
+                <section class="login-section">
+                    <div class="login-container">
+                        <h2>Iniciar Sesión</h2>
+                        <p class="login-subtitle">Accede al sistema de gestión JUANRRY</p>
+                        
+                        <form class="login-form" id="loginForm">
+                            <div class="form-group">
+                                <label for="username">Usuario</label>
+                                <input type="text" id="username" placeholder="Ingresa tu usuario" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="password">Contraseña</label>
+                                <input type="password" id="password" placeholder="Ingresa tu contraseña" required>
+                            </div>
+                            
+                            <button type="submit" class="login-btn">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Iniciar Sesión
+                            </button>
+                            
+                            <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                        </form>
+                    </div>
+                </section>
+                
+               
+            </div>
+        </div>
     </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 JUANRRY - Todos los derechos reservados.</p>
+    </footer>
 
     <script>
     document.getElementById('loginForm').addEventListener('submit', function(e) {
@@ -103,16 +95,19 @@
         const password = document.getElementById('password').value;
         
         // Credenciales de demostración
-        const demoUsers = ['admin', 'manager1', 'employee1'];
-        const demoPassword = 'demo123';
+        const demoUsers = {
+            'admin': { password: 'demo123', role: 'admin', redirect: 'admin.html' },
+            'manager1': { password: 'demo123', role: 'manager', redirect: 'manager.html' },
+            'employee1': { password: 'demo123', role: 'employee', redirect: 'employee.html' }
+        };
         
-        if (demoUsers.includes(username) && password === demoPassword) {
-            // Redirigir al panel de administración
-            window.location.href = 'admin.html';
+        if (demoUsers[username] && password === demoUsers[username].password) {
+            // Redirigir al panel correspondiente según el rol
+            window.location.href = demoUsers[username].redirect;
         } else {
             alert('Usuario o contraseña incorrectos. Use las credenciales de demostración.');
         }
     });
-</script>
+    </script>
 </body>
 </html>

@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Gerencia - JUANRRY</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="manager.css">
+</head>
+<body>
+    <div class="manager-container">
+        <!-- Header -->
+        <header class="manager-header">
+            <div class="header-left">
+                <h1 class="logo">JUANRRY</h1>
+                <span class="system-name">Sistema de Gestión Empresarial</span>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <i class="fas fa-user-tie"></i>
+                    <div class="user-details">
+                        <span class="username">manager1</span>
+                        <span class="user-role">Gerente</span>
+                    </div>
+                </div>
+                <button class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Cerrar Sesión
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="manager-main">
+            <div class="welcome-section">
+                <h2>Panel de Gerencia</h2>
+                <p>Gestión de productos y análisis de inventario</p>
+            </div>
+
+            <!-- Resumen Stats -->
+            <div class="summary-section">
+                <div class="section-header">
+                    <h3>Resumen</h3>
+                    <span class="section-subtitle">Productos</span>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="summary-card">
+                        <div class="stat-main">
+                            <span class="stat-number">8</span>
+                            <span class="stat-label">Productos</span>
+                        </div>
+                        <div class="stat-description">Total en catálogo</div>
+                    </div>
+                    
+                    <div class="summary-card">
+                        <div class="stat-main">
+                            <span class="stat-number">$90.816,67</span>
+                            <span class="stat-label">Valor Inventario</span>
+                        </div>
+                        <div class="stat-description">Total valorizado</div>
+                    </div>
+                    
+                    <div class="summary-card">
+                        <div class="stat-main">
+                            <span class="stat-number">2</span>
+                            <span class="stat-label">Alertas</span>
+                        </div>
+                        <div class="stat-description">Stock bajo</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inventory and Reports -->
+            <div class="inventory-reports">
+                <div class="inventory-card">
+                    <div class="card-header">
+                        <h3>Inventario</h3>
+                        <span class="card-subtitle">Unidades</span>
+                    </div>
+                    <div class="inventory-main">
+                        <span class="inventory-number">333</span>
+                        <span class="inventory-label">En stock</span>
+                    </div>
+                </div>
+                
+                <div class="reports-card">
+                    <div class="card-header">
+                        <h3>Reportes</h3>
+                        <span class="card-subtitle">Generar reportes</span>
+                    </div>
+                    <div class="reports-actions">
+                        <button class="report-btn">
+                            <i class="fas fa-chart-bar"></i>
+                            Reporte de Ventas
+                        </button>
+                        <button class="report-btn">
+                            <i class="fas fa-boxes"></i>
+                            Reporte de Inventario
+                        </button>
+                        <button class="report-btn">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Alertas de Stock
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-section">
+                <!-- Stock por Categoría -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Stock por Categoría</h3>
+                        <p>Distribución de unidades por categoría</p>
+                    </div>
+                    <div class="chart-content">
+                        <div class="category-list">
+                            <div class="category-item">
+                                <div class="category-info">
+                                    <span class="category-name">Periféricos</span>
+                                    <span class="category-value">221</span>
+                                </div>
+                                <div class="category-bar">
+                                    <div class="bar-fill" style="width: 66%"></div>
+                                </div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-info">
+                                    <span class="category-name">Redes</span>
+                                    <span class="category-value">42</span>
+                                </div>
+                                <div class="category-bar">
+                                    <div class="bar-fill" style="width: 13%"></div>
+                                </div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-info">
+                                    <span class="category-name">Electrónica</span>
+                                    <span class="category-value">53</span>
+                                </div>
+                                <div class="category-bar">
+                                    <div class="bar-fill" style="width: 16%"></div>
+                                </div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-info">
+                                    <span class="category-name">Impresión</span>
+                                    <span class="category-value">12</span>
+                                </div>
+                                <div class="category-bar">
+                                    <div class="bar-fill" style="width: 4%"></div>
+                                </div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-info">
+                                    <span class="category-name">Almacenamiento</span>
+                                    <span class="category-value">5</span>
+                                </div>
+                                <div class="category-bar">
+                                    <div class="bar-fill" style="width: 2%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Niveles de Stock -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Niveles de Stock</h3>
+                        <p>Comparación de stock actual vs stock mínimo</p>
+                    </div>
+                    <div class="chart-content">
+                        <div class="stock-levels-chart">
+                            <div class="chart-y-axis">
+                                <span>120</span>
+                                <span>90</span>
+                                <span>60</span>
+                                <span>30</span>
+                                <span>0</span>
+                            </div>
+                            <div class="chart-bars">
+                                <div class="product-bar">
+                                    <div class="bar-label">Teclado Mecánico</div>
+                                    <div class="bar-container">
+                                        <div class="current-stock" style="height: 75%"></div>
+                                        <div class="min-stock" style="height: 25%"></div>
+                                    </div>
+                                    <div class="bar-numbers">45 / 15</div>
+                                </div>
+                                <div class="product-bar">
+                                    <div class="bar-label">Monitor 24"</div>
+                                    <div class="bar-container">
+                                        <div class="current-stock" style="height: 58%"></div>
+                                        <div class="min-stock" style="height: 19%"></div>
+                                    </div>
+                                    <div class="bar-numbers">23 / 8</div>
+                                </div>
+                                <div class="product-bar">
+                                    <div class="bar-label">Tablet 10"</div>
+                                    <div class="bar-container">
+                                        <div class="current-stock" style="height: 38%"></div>
+                                        <div class="min-stock" style="height: 13%"></div>
+                                    </div>
+                                    <div class="bar-numbers">15 / 5</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <div class="legend-color current"></div>
+                                <span>Stock Actual</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color minimum"></div>
+                                <span>Stock Mínimo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Productos con Stock Bajo -->
+            <div class="alerts-section">
+                <div class="section-header">
+                    <h3>Productos con Stock Bajo</h3>
+                    <span class="alert-badge">2 Alertas</span>
+                </div>
+                <p class="section-subtitle">Requieren atención inmediata</p>
+                
+                <div class="alerts-grid">
+                    <div class="alert-card critical">
+                        <div class="alert-icon">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div class="alert-content">
+                            <h4>Monitor Samsung 27"</h4>
+                            <p class="stock-info">Stock: 8 / Mínimo: 15</p>
+                        </div>
+                        <button class="restock-btn">
+                            <i class="fas fa-truck-loading"></i>
+                            Reabastecer
+                        </button>
+                    </div>
+                    
+                    <div class="alert-card warning">
+                        <div class="alert-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="alert-content">
+                            <h4>SSD Samsung 1TB</h4>
+                            <p class="stock-info">Stock: 5 / Mínimo: 25</p>
+                        </div>
+                        <button class="restock-btn">
+                            <i class="fas fa-truck-loading"></i>
+                            Reabastecer
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="manager.js"></script>
+</body>
+</html>
