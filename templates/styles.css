@@ -319,6 +319,314 @@ body {
     font-size: 0.85rem;
 }
 
+/* Agrega estos estilos al final de tu archivo CSS */
+
+/* Form Footer */
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 18px;
+}
+
+.form-footer .toggle-form {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s;
+}
+
+.form-footer .toggle-form:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+/* Register Section */
+.register-section .login-container {
+    animation: fadeIn 0.5s ease;
+}
+
+/* Select Input */
+.form-select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e8e8e8;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23667eea' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+.form-select:focus {
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    outline: none;
+}
+
+.form-select option {
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Clickable user credentials */
+.user-info p {
+    cursor: pointer;
+    transition: color 0.3s;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.user-info p:hover {
+    color: #764ba2;
+    background: rgba(102, 126, 234, 0.1);
+}
+
+/* Responsive adjustments for form footer */
+@media (max-width: 768px) {
+    .form-footer {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    .forgot-password {
+        order: 2;
+    }
+    
+    .toggle-form {
+        order: 1;
+    }
+}
+
+/* Add smooth transition for section switching */
+.login-section, .register-section {
+    transition: all 0.3s ease;
+}
+
+/* Style for the register button in login form */
+#showRegister {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+#showRegister:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(76, 175, 80, 0.3);
+    text-decoration: none;
+}
+
+/* Additional feature card for registration */
+.feature-card:nth-child(4) {
+    border-left: 3px solid #4CAF50;
+}
+
+.feature-card:nth-child(4) .feature-icon {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+}
+/* Agrega estas correcciones al final de tu archivo CSS */
+
+/* Ajustes para el layout principal */
+.two-column-layout {
+    display: flex;
+    min-height: 100vh;
+    flex: 1;
+    align-items: center;
+    overflow: hidden; /* Previene desbordamiento */
+}
+
+/* Contenedor de autenticación con altura fija */
+.auth-section {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    min-height: 0; /* Permite que se ajuste al contenido */
+    overflow-y: auto; /* Permite scroll si es necesario */
+    max-height: 90vh; /* Limita la altura máxima */
+}
+
+/* Login y register sections con altura controlada */
+.login-section, 
+.register-section {
+    margin-bottom: 25px;
+    height: auto;
+}
+
+/* Contenedor de login con altura ajustable */
+.login-container {
+    background: white;
+    border-radius: 16px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    height: auto;
+    max-height: 600px; /* Altura máxima para formularios */
+    overflow-y: auto; /* Scroll interno si es necesario */
+}
+
+/* Demo section ajustada */
+.demo-section {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    margin-top: 20px;
+    height: auto;
+}
+
+/* Ajuste para formulario de registro (más campos) */
+.register-section .login-container {
+    max-height: 700px; /* Un poco más alto para el formulario de registro */
+}
+
+/* Form groups con margen más compacto para registro */
+.register-section .form-group {
+    margin-bottom: 15px;
+}
+
+/* Footer ajustado para mantenerse abajo */
+.footer {
+    text-align: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.85rem;
+    position: relative;
+    z-index: 1;
+    margin-top: auto;
+}
+
+/* Scroll personalizado para el contenedor de login */
+.login-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.login-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.login-container::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+}
+
+.login-container::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Ajustes responsive adicionales */
+@media (max-width: 1024px) {
+    .two-column-layout {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+    
+    .left-column, .right-column {
+        height: auto;
+        padding: 30px 20px;
+        min-height: auto;
+    }
+    
+    .auth-section {
+        max-height: none; /* Sin límite en móvil */
+    }
+    
+    .login-container {
+        max-height: none;
+    }
+}
+
+@media (max-height: 800px) {
+    /* Para pantallas más cortas */
+    .auth-section {
+        max-height: 80vh;
+    }
+    
+    .login-container {
+        padding: 25px;
+        max-height: 500px;
+    }
+    
+    .register-section .login-container {
+        max-height: 550px;
+    }
+}
+
+/* Ajustes específicos para formulario de registro largo */
+@media (max-height: 700px) {
+    .register-section .login-container {
+        max-height: 450px;
+        overflow-y: auto;
+    }
+    
+    .form-group {
+        margin-bottom: 12px;
+    }
+    
+    .form-group input,
+    .form-select {
+        padding: 12px 14px;
+    }
+}
+
+/* Mejora para la transición entre formularios */
+.login-section, .register-section {
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.4s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ajuste para el botón de crear cuenta */
+.register-section .login-btn {
+    margin-top: 10px;
+}
+
+/* Ajuste para el enlace de volver al login */
+.register-section .form-footer {
+    margin-top: 15px;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .two-column-layout {

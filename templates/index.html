@@ -33,7 +33,7 @@
                         </div>
                         <div class="feature-content">
                             <h3>Gestión Multirrol</h3>
-                            <p>Control de acceso basado en roles para administradores, gerentes y empleados</p>
+                            <p>Control de acceso basado en roles para administradores, gerentes, empleados, clientes y proveedores</p>
                         </div>
                     </div>
                     <div class="feature-card">
@@ -41,18 +41,28 @@
                             <i class="fas fa-database"></i>
                         </div>
                         <div class="feature-content">
-                            <h3>Respaldos Automáticos</h3>
-                            <p>Sistema de backup y recuperación de datos en tiempo real</p>
+                            <h3>Plataforma Integrada</h3>
+                            <p>Conecta con proveedores, gestiona inventarios y atiende clientes desde un solo lugar</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Registro Flexible</h3>
+                            <p>Regístrate como cliente o proveedor para acceder al sistema</p>
                         </div>
                     </div>
                 </section>
             </div>
         </div>
 
-        <!-- Columna Derecha - Login y Credenciales -->
+        <!-- Columna Derecha - Login y Registro -->
         <div class="right-column">
             <div class="auth-section">
-                <section class="login-section">
+                <!-- Login Form (mostrado por defecto) -->
+                <section class="login-section" id="loginSection">
                     <div class="login-container">
                         <h2>Iniciar Sesión</h2>
                         <p class="login-subtitle">Accede al sistema de gestión JUANRRY</p>
@@ -73,12 +83,66 @@
                                 Iniciar Sesión
                             </button>
                             
-                            <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                            <div class="form-footer">
+                                <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                                <a href="#" class="toggle-form" id="showRegister">Registrarse</a>
+                            </div>
                         </form>
                     </div>
                 </section>
-                
-               
+
+               <!-- Reemplaza esta parte del HTML (líneas 85-106) con esta versión mejorada: -->
+
+<section class="register-section" id="registerSection" style="display: none;">
+    <div class="login-container">
+        <h2>Crear Cuenta</h2>
+        <p class="login-subtitle">Regístrate como cliente o proveedor</p>
+        
+        <form class="login-form" id="registerForm">
+            <div class="form-group">
+                <label for="accountType">Tipo de Cuenta</label>
+                <select id="accountType" class="form-select" required>
+                    <option value="" disabled selected>Selecciona el tipo de cuenta</option>
+                    <option value="cliente">Cliente</option>
+                    <option value="proveedor">Proveedor</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="regUsername">Nombre de usuario</label>
+                <input type="text" id="regUsername" placeholder="Ingresa tu nombre de usuario" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" placeholder="correo@ejemplo.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="regPassword">Contraseña</label>
+                <input type="password" id="regPassword" placeholder="Mínimo 6 caracteres" minlength="6" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmPassword">Confirmar Contraseña</label>
+                <input type="password" id="confirmPassword" placeholder="Repite tu contraseña" minlength="6" required>
+            </div>
+            
+            <button type="submit" class="login-btn">
+                <i class="fas fa-user-plus"></i>
+                Crear Cuenta
+            </button>
+            
+            <div class="form-footer">
+                <a href="#" class="toggle-form" id="showLogin">
+                    <i class="fas fa-arrow-left"></i>
+                    Volver al inicio de sesión
+                </a>
+            </div>
+        </form>
+    </div>
+</section>
+                    </div>
             </div>
         </div>
     </div>
@@ -89,32 +153,96 @@
 
     <script>
     document.getElementById('loginForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    
-    // Credenciales de demostración
-    const demoUsers = {
-        'admin': { password: 'demo123', role: 'admin', redirect: 'admin.html' },
-        'manager1': { password: 'demo123', role: 'manager', redirect: 'manager.html' },
-        'employee1': { password: 'demo123', role: 'employee', redirect: 'employee.html' },
-        'customer1': { password: 'demo123', role: 'customer', redirect: 'customer.html' }
-    };
-    
-    if (demoUsers[username] && password === demoUsers[username].password) {
-        // Guardar información del usuario en localStorage
-        localStorage.setItem('currentUser', JSON.stringify({
-            username: username,
-            role: demoUsers[username].role
-        }));
+        e.preventDefault();
         
-        // Redirigir al panel correspondiente según el rol
-        window.location.href = demoUsers[username].redirect;
-    } else {
-        alert('Usuario o contraseña incorrectos. Use las credenciales de demostración.');
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        // Credenciales de demostración
+        const demoUsers = {
+            'admin': { password: 'demo123', role: 'admin', redirect: 'admin.html' },
+            'manager1': { password: 'demo123', role: 'manager', redirect: 'manager.html' },
+            'employee1': { password: 'demo123', role: 'employee', redirect: 'employee.html' },
+            'customer1': { password: 'demo123', role: 'customer', redirect: 'customer.html' }
+        };
+        
+        if (demoUsers[username] && password === demoUsers[username].password) {
+            // Guardar información del usuario en localStorage
+            localStorage.setItem('currentUser', JSON.stringify({
+                username: username,
+                role: demoUsers[username].role
+            }));
+            
+            // Redirigir al panel correspondiente según el rol
+            window.location.href = demoUsers[username].redirect;
+        } else {
+            alert('Usuario o contraseña incorrectos. Use las credenciales de demostración.');
+        }
+    });
+
+    // Validación del formulario de registro
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const password = document.getElementById('regPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const accountType = document.getElementById('accountType').value;
+        const username = document.getElementById('regUsername').value;
+        const email = document.getElementById('email').value;
+        
+        // Validar que las contraseñas coincidan
+        if (password !== confirmPassword) {
+            alert('Las contraseñas no coinciden. Por favor, inténtalo de nuevo.');
+            return;
+        }
+        
+        // Validar longitud de contraseña
+        if (password.length < 6) {
+            alert('La contraseña debe tener al menos 6 caracteres.');
+            return;
+        }
+        
+        // Aquí normalmente enviarías los datos a un servidor
+        // Por ahora solo simularemos el registro exitoso
+        alert(`Cuenta creada exitosamente!\n\nTipo: ${accountType}\nUsuario: ${username}\nEmail: ${email}\n\nPuedes ahora iniciar sesión con tus credenciales.`);
+        
+        // Volver al formulario de login
+        showLoginForm();
+        
+        // Auto-completar el login con el nuevo usuario
+        document.getElementById('username').value = username;
+    });
+
+    // Funcionalidad para cambiar entre login y registro
+    document.getElementById('showRegister').addEventListener('click', function(e) {
+        e.preventDefault();
+        showRegisterForm();
+    });
+
+    document.getElementById('showLogin').addEventListener('click', function(e) {
+        e.preventDefault();
+        showLoginForm();
+    });
+
+    function showLoginForm() {
+        document.getElementById('loginSection').style.display = 'block';
+        document.getElementById('registerSection').style.display = 'none';
     }
-});
+
+    function showRegisterForm() {
+        document.getElementById('loginSection').style.display = 'none';
+        document.getElementById('registerSection').style.display = 'block';
+    }
+
+    // Auto-completar credenciales demo al hacer clic en los usuarios
+    document.querySelectorAll('.user-info p').forEach(function(element) {
+        element.addEventListener('click', function() {
+            const username = this.textContent;
+            document.getElementById('username').value = username;
+            document.getElementById('password').value = 'demo123';
+            showLoginForm();
+        });
+    });
     </script>
 </body>
 </html>
