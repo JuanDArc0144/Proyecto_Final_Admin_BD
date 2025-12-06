@@ -89,25 +89,32 @@
 
     <script>
     document.getElementById('loginForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+    e.preventDefault();
+    
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    
+    // Credenciales de demostración
+    const demoUsers = {
+        'admin': { password: 'demo123', role: 'admin', redirect: 'admin.html' },
+        'manager1': { password: 'demo123', role: 'manager', redirect: 'manager.html' },
+        'employee1': { password: 'demo123', role: 'employee', redirect: 'employee.html' },
+        'customer1': { password: 'demo123', role: 'customer', redirect: 'customer.html' }
+    };
+    
+    if (demoUsers[username] && password === demoUsers[username].password) {
+        // Guardar información del usuario en localStorage
+        localStorage.setItem('currentUser', JSON.stringify({
+            username: username,
+            role: demoUsers[username].role
+        }));
         
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        
-        // Credenciales de demostración
-        const demoUsers = {
-            'admin': { password: 'demo123', role: 'admin', redirect: 'admin.html' },
-            'manager1': { password: 'demo123', role: 'manager', redirect: 'manager.html' },
-            'employee1': { password: 'demo123', role: 'employee', redirect: 'employee.html' }
-        };
-        
-        if (demoUsers[username] && password === demoUsers[username].password) {
-            // Redirigir al panel correspondiente según el rol
-            window.location.href = demoUsers[username].redirect;
-        } else {
-            alert('Usuario o contraseña incorrectos. Use las credenciales de demostración.');
-        }
-    });
+        // Redirigir al panel correspondiente según el rol
+        window.location.href = demoUsers[username].redirect;
+    } else {
+        alert('Usuario o contraseña incorrectos. Use las credenciales de demostración.');
+    }
+});
     </script>
 </body>
 </html>
