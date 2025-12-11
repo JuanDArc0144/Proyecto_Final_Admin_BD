@@ -1,15 +1,11 @@
 <?php
-// logout.php
+session_start();
+header('Content-Type: application/json');
 
-// Iniciar o reanudar la sesión
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
-// Limpiar todas las variables de sesión
+// Destruir todas las variables de sesión
 $_SESSION = array();
 
-// Destruir la sesión
+// Borrar la cookie de sesión si existe
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
     setcookie(session_name(), '', time() - 42000,
@@ -18,9 +14,7 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
+// Destruir la sesión completamente
 session_destroy();
 
-// Redirigir a la página de login
-header("Location: login.php");
-exit;
-?>
+echo json_encode(['success' => true]);

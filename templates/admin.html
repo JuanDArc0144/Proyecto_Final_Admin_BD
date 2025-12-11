@@ -6,6 +6,7 @@
     <title>Panel de Administración - JUANRRY</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="admin.css">
+
 </head>
 <body>
     <div class="admin-container">
@@ -19,8 +20,8 @@
                 <div class="user-info">
                     <i class="fas fa-user-circle"></i>
                     <div class="user-details">
-                        <span class="username">admin</span>
-                        <span class="user-role">Administrador</span>
+                        <span class="username" id="headerUsername">Cargando...</span>
+                        <span class="user-role" id="headerRole">...</span>
                     </div>
                 </div>
                 <button class="logout-btn">
@@ -70,7 +71,7 @@
                         </div>
                         <div class="stat-info">
                             <h3>Total Productos</h3>
-                            <span class="stat-number">8</span>
+                            <span class="stat-number">0</span>
                             <span class="stat-desc">Productos registrados</span>
                         </div>
                     </div>
@@ -81,7 +82,7 @@
                         </div>
                         <div class="stat-info">
                             <h3>Valor Total</h3>
-                            <span class="stat-number">$90.816,67</span>
+                            <span class="stat-number">$0.00</span>
                             <span class="stat-desc">Inventario valorizado</span>
                         </div>
                     </div>
@@ -92,7 +93,7 @@
                         </div>
                         <div class="stat-info">
                             <h3>Stock Bajo</h3>
-                            <span class="stat-number">2</span>
+                            <span class="stat-number">0</span>
                             <span class="stat-desc">Productos con stock crítico</span>
                         </div>
                     </div>
@@ -117,45 +118,10 @@
                         </div>
                         <div class="chart-content">
                             <div class="category-stats">
-                                <div class="category-item">
-                                    <span class="category-name">Periféricos:</span>
-                                    <span class="category-value">221</span>
-                                </div>
-                                <div class="category-item">
-                                    <span class="category-name">Electrónica:</span>
-                                    <span class="category-value">53</span>
-                                </div>
-                                <div class="category-item">
-                                    <span class="category-name">Impresión:</span>
-                                    <span class="category-value">12</span>
-                                </div>
-                                <div class="category-item">
-                                    <span class="category-name">Redes:</span>
-                                    <span class="category-value">42</span>
-                                </div>
-                                <div class="category-item">
-                                    <span class="category-name">Almacenamiento:</span>
-                                    <span class="category-value">5</span>
-                                </div>
+                                
                             </div>
                             <div class="chart-visual">
-                                <div class="chart-bars">
-                                    <div class="bar" style="height: 100%; background: #3498db;">
-                                        <span>Periféricos</span>
-                                    </div>
-                                    <div class="bar" style="height: 24%; background: #2ecc71;">
-                                        <span>Electrónica</span>
-                                    </div>
-                                    <div class="bar" style="height: 5%; background: #e74c3c;">
-                                        <span>Impresión</span>
-                                    </div>
-                                    <div class="bar" style="height: 19%; background: #f39c12;">
-                                        <span>Redes</span>
-                                    </div>
-                                    <div class="bar" style="height: 2%; background: #9b59b6;">
-                                        <span>Almacenamiento</span>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -170,22 +136,7 @@
                                 <div class="verification-item">
                                     <h4><i class="fas fa-chart-pie"></i> Valor por Categoría</h4>
                                     <div class="value-categories">
-                                        <div class="value-category">
-                                            <span class="value-label">Electrónica</span>
-                                            <span class="value-amount">$72,653.34</span>
-                                        </div>
-                                        <div class="value-category">
-                                            <span class="value-label">Periféricos</span>
-                                            <span class="value-amount">$15,200.00</span>
-                                        </div>
-                                        <div class="value-category">
-                                            <span class="value-label">Impresión</span>
-                                            <span class="value-amount">$963.33</span>
-                                        </div>
-                                        <div class="value-category">
-                                            <span class="value-label">Redes</span>
-                                            <span class="value-amount">$2,000.00</span>
-                                        </div>
+                                        
                                     </div>
                                 </div>
 
@@ -196,49 +147,7 @@
                                     <p class="alerts-subtitle">Productos que requieren reabastecimiento</p>
                                     
                                     <div class="alerts-list">
-                                        <div class="alert-item critical">
-                                            <div class="alert-header">
-                                                <h5>Monitor Samsung 27"</h5>
-                                                <span class="alert-badge">Crítico</span>
-                                            </div>
-                                            <div class="alert-details">
-                                                <span class="stock-info">
-                                                    <i class="fas fa-box"></i>
-                                                    Stock actual: <strong>8</strong> (Mínimo: 15)
-                                                </span>
-                                                <div class="stock-progress">
-                                                    <div class="progress-bar">
-                                                        <div class="progress-fill" style="width: 53%;"></div>
-                                                    </div>
-                                                    <span class="progress-text">53% del mínimo</span>
-                                                </div>
-                                            </div>
-                                            <button class="alert-action-btn" onclick="reorderProduct('Monitor Samsung 27\"')">
-                                                <i class="fas fa-shopping-cart"></i> Reabastecer
-                                            </button>
-                                        </div>
-
-                                        <div class="alert-item critical">
-                                            <div class="alert-header">
-                                                <h5>SSD Samsung 1TB</h5>
-                                                <span class="alert-badge">Crítico</span>
-                                            </div>
-                                            <div class="alert-details">
-                                                <span class="stock-info">
-                                                    <i class="fas fa-box"></i>
-                                                    Stock actual: <strong>5</strong> (Mínimo: 25)
-                                                </span>
-                                                <div class="stock-progress">
-                                                    <div class="progress-bar">
-                                                        <div class="progress-fill" style="width: 20%;"></div>
-                                                    </div>
-                                                    <span class="progress-text">20% del mínimo</span>
-                                                </div>
-                                            </div>
-                                            <button class="alert-action-btn" onclick="reorderProduct('SSD Samsung 1TB')">
-                                                <i class="fas fa-shopping-cart"></i> Reabastecer
-                                            </button>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -259,55 +168,53 @@
                     <p>Completa el formulario para agregar un producto al inventario.</p>
                     
                     <form id="addProductForm" class="product-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="productName">Nombre del Producto *</label>
-                                <input type="text" id="productName" placeholder="Ej: Laptop Dell XPS 15" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="productCategory">Categoría *</label>
-                                <select id="productCategory" required>
-                                    <option value="">Selecciona una categoría</option>
-                                    <option value="electronica">Electrónica</option>
-                                    <option value="perifericos">Periféricos</option>
-                                    <option value="impresion">Impresión</option>
-                                    <option value="redes">Redes</option>
-                                    <option value="almacenamiento">Almacenamiento</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="productSupplier">Proveedor *</label>
-                                <select id="productSupplier" required>
-                                    <option value="">Selecciona un proveedor</option>
-                                    <option value="dell">Dell Inc.</option>
-                                    <option value="samsung">Samsung</option>
-                                    <option value="logitech">Logitech</option>
-                                    <option value="hp">HP</option>
-                                    <option value="tp-link">TP-Link</option>
-                                    <option value="corsair">Corsair</option>
-                                </select>
-                            </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productName">Nombre del Producto *</label>
+                            <input type="text" id="productName" placeholder="Ej: Laptop Dell XPS 15" required>
                         </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="productPrice">Precio ($)</label>
-                                <input type="number" id="productPrice" step="0.01" placeholder="0.00" min="0">
-                            </div>
-                            <div class="form-group">
-                                <label for="productStock">Stock Inicial</label>
-                                <input type="number" id="productStock" placeholder="0" min="0">
-                            </div>
-                            <div class="form-group">
-                                <label for="productMinStock">Stock Mínimo</label>
-                                <input type="number" id="productMinStock" placeholder="0" min="0">
-                            </div>
+                        <div class="form-group">
+                            <label for="productCategory">Categoría *</label>
+                            <select id="productCategory" required>
+                                <option value="">Selecciona una categoría</option>
+                            </select>
                         </div>
-                        
-                        <button type="submit" class="submit-btn">
-                            <i class="fas fa-save"></i> Guardar Producto
-                        </button>
-                    </form>
+                        <div class="form-group">
+                            <label for="productSupplier">Proveedor *</label>
+                            <select id="productSupplier" required>
+                                <option value="">Selecciona un proveedor</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productDescription">Descripción</label>
+                        <input type="text" id="productDescription" placeholder="Breve descripción del producto">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productPurchasePrice">Precio Compra ($) *</label>
+                            <input type="number" id="productPurchasePrice" step="0.01" placeholder="0.00" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productSalePrice">Precio Venta ($) *</label>
+                            <input type="number" id="productSalePrice" step="0.01" placeholder="0.00" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productStock">Stock Inicial *</label>
+                            <input type="number" id="productStock" placeholder="0" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productMinStock">Stock Mínimo *</label>
+                            <input type="number" id="productMinStock" placeholder="0" min="0" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-save"></i> Guardar Producto
+                    </button>
+                </form>
                 </div>
 
                 <div class="table-card">
@@ -320,7 +227,6 @@
                         <table id="productsTable">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Categoría</th>
                                     <th>Proveedor</th>
@@ -387,94 +293,16 @@
                         </div>
                         <div class="analysis-content">
                             <div class="supplier-list">
-                                <div class="supplier-item">
-                                    <span class="supplier-name">Logitech</span>
-                                    <div class="supplier-bar">
-                                        <div class="bar-fill" style="width: 80%; background: #3498db;"></div>
-                                    </div>
-                                    <span class="supplier-count">4</span>
-                                </div>
-                                <div class="supplier-item">
-                                    <span class="supplier-name">Samsung</span>
-                                    <div class="supplier-bar">
-                                        <div class="bar-fill" style="width: 60%; background: #2ecc71;"></div>
-                                    </div>
-                                    <span class="supplier-count">3</span>
-                                </div>
-                                <div class="supplier-item">
-                                    <span class="supplier-name">Dell Inc.</span>
-                                    <div class="supplier-bar">
-                                        <div class="bar-fill" style="width: 40%; background: #e74c3c;"></div>
-                                    </div>
-                                    <span class="supplier-count">2</span>
-                                </div>
-                                <div class="supplier-item">
-                                    <span class="supplier-name">Corsair</span>
-                                    <div class="supplier-bar">
-                                        <div class="bar-fill" style="width: 30%; background: #f39c12;"></div>
-                                    </div>
-                                    <span class="supplier-count">1</span>
-                                </div>
-                                <div class="supplier-item">
-                                    <span class="supplier-name">TP-Link</span>
-                                    <div class="supplier-bar">
-                                        <div class="bar-fill" style="width: 20%; background: #9b59b6;"></div>
-                                    </div>
-                                    <span class="supplier-count">1</span>
-                                </div>
-                                <div class="supplier-item">
-                                    <span class="supplier-name">HP</span>
-                                    <div class="supplier-bar">
-                                        <div class="bar-fill" style="width: 10%; background: #1abc9c;"></div>
-                                    </div>
-                                    <span class="supplier-count">1</span>
-                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="analysis-card">
                         <div class="analysis-header">
-                            <h3><i class="fas fa-cube"></i> Modelos Más Vendidos</h3>
+                            <h3><i class="fas fa-cube"></i> Modelos con mayor stock</h3>
                         </div>
                         <div class="analysis-content">
-                            <div class="model-list">
-                                <div class="model-item">
-                                    <i class="fas fa-star"></i>
-                                    <div class="model-info">
-                                        <strong>Modelo:</strong> Samsung 21"
-                                    </div>
-                                </div>
-                                <div class="model-item">
-                                    <i class="fas fa-star"></i>
-                                    <div class="model-info">
-                                        <strong>Modelo:</strong> Mecánico Car
-                                    </div>
-                                </div>
-                                <div class="model-item">
-                                    <i class="fas fa-star"></i>
-                                    <div class="model-info">
-                                        <strong>Modelo:</strong> Logitech G20
-                                    </div>
-                                </div>
-                                <div class="model-item">
-                                    <i class="fas fa-star"></i>
-                                    <div class="model-info">
-                                        <strong>Modelo:</strong> Samsung T18
-                                    </div>
-                                </div>
-                                <div class="model-item">
-                                    <i class="fas fa-star"></i>
-                                    <div class="model-info">
-                                        <strong>Modelo:</strong> TP-Link AC77
-                                    </div>
-                                </div>
-                                <div class="model-item">
-                                    <i class="fas fa-star"></i>
-                                    <div class="model-info">
-                                        <strong>Modelo:</strong> Dell XPS 15
-                                    </div>
-                                </div>
+                            <div class="model-list"> 
                             </div>
                         </div>
                     </div>
@@ -496,7 +324,7 @@
                             </div>
                             <div class="stat-details">
                                 <h3>Total de Respaldos</h3>
-                                <span class="stat-number">5</span>
+                                <span class="stat-number" id="totalBackups">0</span>
                             </div>
                         </div>
                         
@@ -506,7 +334,7 @@
                             </div>
                             <div class="stat-details">
                                 <h3>Último Respaldo</h3>
-                                <span class="stat-date">4/12/2025</span>
+                                <span class="stat-date" id="lastBackupDate">-</span>
                             </div>
                         </div>
                         
@@ -516,7 +344,7 @@
                             </div>
                             <div class="stat-details">
                                 <h3>Espacio Total</h3>
-                                <span class="stat-size">2.4 MB</span>
+                                <span class="stat-size" id="totalBackupSize">0 MB</span>
                             </div>
                         </div>
                     </div>
@@ -550,44 +378,8 @@
                 <div class="security-grid">
                     <div class="security-card">
                         <h3><i class="fas fa-users-cog"></i> Gestión de Usuarios</h3>
-                        <div class="user-list">
-                            <div class="user-item admin">
-                                <div class="user-avatar">
-                                    <i class="fas fa-user-shield"></i>
-                                </div>
-                                <div class="user-info">
-                                    <h4>admin</h4>
-                                    <span class="user-role">Administrador</span>
-                                    <span class="user-last-login">Último acceso: Hoy, 18:57</span>
-                                </div>
-                                <div class="user-actions">
-                                    <button class="icon-btn" title="Editar" onclick="editUser('admin')">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="icon-btn" title="Reiniciar contraseña" onclick="resetPassword('admin')">
-                                        <i class="fas fa-key"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <div class="user-item">
-                                <div class="user-avatar">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <div class="user-info">
-                                    <h4>customer1</h4>
-                                    <span class="user-role">Cliente</span>
-                                    <span class="user-last-login">Último acceso: Hoy, 18:56</span>
-                                </div>
-                                <div class="user-actions">
-                                    <button class="icon-btn" title="Editar" onclick="editUser('customer1')">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="icon-btn" title="Reiniciar contraseña" onclick="resetPassword('customer1')">
-                                        <i class="fas fa-key"></i>
-                                    </button>
-                                </div>
-                            </div>
+                        <div class="user-list" id="usersListContainer">
+                            <!-- Los usuarios se cargarán con JavaScript -->
                         </div>
                         
                         <button class="add-user-btn" onclick="addUser()">
@@ -595,7 +387,7 @@
                         </button>
                     </div>
 
-                    <div class="security-card">
+                    <!-- <div class="security-card">
                         <h3><i class="fas fa-shield-alt"></i> Configuración de Seguridad</h3>
                         <div class="security-settings">
                             <div class="setting-item">
@@ -631,7 +423,7 @@
                                 </label>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -643,16 +435,6 @@
                 </div>
 
                 <div class="activity-grid">
-                    <div class="search-bar">
-                        <div class="search-container">
-                            <i class="fas fa-search"></i>
-                            <input type="text" placeholder="Buscar por usuario o detalles..." id="activitySearch" onkeyup="searchActivity()">
-                        </div>
-                        <div class="search-info">
-                            <span class="results-count" id="resultsCount">Mostrando 4 de 4 registros</span>
-                        </div>
-                    </div>
-
                     <div class="timeline-card">
                         <h3><i class="fas fa-stream"></i> Línea de Tiempo</h3>
                         <p>Actividad reciente en orden cronológico</p>
@@ -703,13 +485,12 @@
 
     <!-- Modal para editar producto -->
     <div id="editModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modalTitle">Editar Producto</h3>
-                <button class="close-modal" onclick="closeModal()">&times;</button>
-            </div>
-            <div class="modal-body" id="modalBody">
-                <!-- El contenido se cargará dinámicamente -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">Editar Producto</h3>
+            <button class="close-modal" onclick="closeModal()">&times;</button> 
+        </div>
+        <div class="modal-body" id="modalBody">
             </div>
         </div>
     </div>

@@ -19,8 +19,8 @@
                 <div class="user-info">
                     <i class="fas fa-user"></i>
                     <div class="user-details">
-                        <span class="username">employee1</span>
-                        <span class="user-role">Empleado</span>
+                        <span class="username" id="employeeHeaderUsername">Cargando...</span>
+                        <span class="user-role" id="employeeHeaderRole">...</span>
                     </div>
                 </div>
                 <button class="logout-btn">
@@ -54,7 +54,7 @@
                         </div>
                         <div class="stat-info">
                             <h3>Total Productos</h3>
-                            <span class="stat-number">8</span>
+                            <span class="stat-number" id="statTotalProducts">0</span>
                             <span class="stat-desc">En el sistema</span>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                         </div>
                         <div class="stat-info">
                             <h3>Stock Total</h3>
-                            <span class="stat-number">333</span>
+                            <span class="stat-number" id="statTotalStock">0</span>
                             <span class="stat-desc">Unidades disponibles</span>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                         </div>
                         <div class="stat-info">
                             <h3>Stock Bajo</h3>
-                            <span class="stat-number">2</span>
+                            <span class="stat-number" id="statLowStock">0</span>
                             <span class="stat-desc">Requieren atención</span>
                         </div>
                     </div>
@@ -90,25 +90,8 @@
                             <h3>Productos con Stock Bajo</h3>
                             <p>Notificar al gerente sobre estos productos</p>
                         </div>
-                        <div class="alerts-list">
-                            <div class="alert-item">
-                                <div class="product-info">
-                                    <h4>Monitor Samsung 27"</h4>
-                                    <p class="stock-details">Stock: 8 / Mínimo: 15</p>
-                                </div>
-                                <div class="alert-badge low">
-                                    Bajo
-                                </div>
-                            </div>
-                            <div class="alert-item">
-                                <div class="product-info">
-                                    <h4>SSD Samsung 1TB</h4>
-                                    <p class="stock-details">Stock: 5 / Mínimo: 25</p>
-                                </div>
-                                <div class="alert-badge low">
-                                    Bajo
-                                </div>
-                            </div>
+                        <div class="alerts-list" id="empAlertsList">
+
                         </div>
                         <button class="notify-btn">
                             <i class="fas fa-bell"></i>
@@ -122,52 +105,7 @@
                             <h3>Stock por Categoría</h3>
                             <p>Distribución del inventario actual</p>
                         </div>
-                        <div class="categories-list">
-                            <div class="category-item">
-                                <div class="category-header">
-                                    <span class="category-name">Periféricos</span>
-                                    <span class="category-stats">221 unidades (66.4%)</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 66.4%"></div>
-                                </div>
-                            </div>
-                            <div class="category-item">
-                                <div class="category-header">
-                                    <span class="category-name">Redes</span>
-                                    <span class="category-stats">42 unidades (12.6%)</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 12.6%"></div>
-                                </div>
-                            </div>
-                            <div class="category-item">
-                                <div class="category-header">
-                                    <span class="category-name">Electrónica</span>
-                                    <span class="category-stats">53 unidades (15.9%)</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 15.9%"></div>
-                                </div>
-                            </div>
-                            <div class="category-item">
-                                <div class="category-header">
-                                    <span class="category-name">Impresión</span>
-                                    <span class="category-stats">12 unidades (3.6%)</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 3.6%"></div>
-                                </div>
-                            </div>
-                            <div class="category-item">
-                                <div class="category-header">
-                                    <span class="category-name">Almacenamiento</span>
-                                    <span class="category-stats">5 unidades (1.5%)</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 1.5%"></div>
-                                </div>
-                            </div>
+                        <div class="categories-list" id="empCategoriesList">
                         </div>
                     </div>
                 </div>
@@ -175,15 +113,31 @@
 
             <!-- Inventario Tab Content -->
             <div class="tab-content" id="inventario-content">
-                <div class="inventory-actions">
-                    <div class="search-box">
-                        <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Buscar producto...">
+                <div class="inventory-actions" style="justify-content: flex-end;">
+                </div>
+
+                <div id="filterPanel" style="display: none; background: #fff; padding: 15px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); gap: 15px; grid-template-columns: 1fr 1fr;">
+                    
+                    <div class="form-group">
+                        <label style="font-size: 0.9em; color: #7f8c8d;">Filtrar por Categoría:</label>
+                        <select id="filterCategory" onchange="filterInventory()" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
+                            <option value="">Todas las Categorías</option>
+                            </select>
                     </div>
-                    <button class="filter-btn">
-                        <i class="fas fa-filter"></i>
-                        Filtrar
-                    </button>
+                    <div class="form-group">
+                        <label style="font-size: 0.9em; color: #7f8c8d;">Filtrar por Proveedor:</label>
+                        <select id="filterSupplier" onchange="filterInventory()" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
+                            <option value="">Todos los Proveedores</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label style="font-size: 0.9em; color: #7f8c8d;">Filtrar por Estado:</label>
+                        <select id="filterStatus" onchange="filterInventory()" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
+                            <option value="">Todos los Estados</option>
+                            <option value="normal">Stock Normal</option>
+                            <option value="low">Stock Bajo</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="inventory-table">
@@ -194,11 +148,10 @@
                         <div class="col-min">Mínimo</div>
                         <div class="col-status">Estado</div>
                     </div>
-                    <?php
-                    $sql = "SELECT nombre, descripcion, precio_compra, precio_venta FROM usuarios";
                     
-
-                    ?>
+                    <div id="inventoryTableBody">
+                        <div style="padding: 20px; text-align: center; color: #999;">Cargando inventario...</div>
+                    </div>
                 </div>
             </div>
 
@@ -206,49 +159,39 @@
             <div class="tab-content" id="busqueda-content">
                 <div class="search-section">
                     <div class="search-header">
-                        <h3>Búsqueda de Productos</h3>
-                        <p>Encuentra productos específicos en el inventario</p>
+                        <h3>Búsqueda Avanzada de Productos</h3>
+                        <p>Encuentra productos específicos, verifica precios y disponibilidad.</p>
                     </div>
                     
                     <div class="search-form">
                         <div class="form-group">
                             <label for="search-term">Término de búsqueda</label>
-                            <input type="text" id="search-term" placeholder="Nombre del producto...">
+                            <input type="text" id="search-term" placeholder="Escribe el nombre del producto..." onkeyup="performSearch()">
                         </div>
                         
                         <div class="form-group">
                             <label for="search-category">Categoría</label>
-                            <select id="search-category">
+                            <select id="search-category" onchange="performSearch()">
                                 <option value="">Todas las categorías</option>
-                                <option value="Periféricos">Periféricos</option>
-                                <option value="Electrónica">Electrónica</option>
-                                <option value="Impresión">Impresión</option>
-                                <option value="Redes">Redes</option>
-                                <option value="Almacenamiento">Almacenamiento</option>
-                            </select>
+                                </select>
                         </div>
                         
                         <div class="form-group">
                             <label for="search-status">Estado de stock</label>
-                            <select id="search-status">
+                            <select id="search-status" onchange="performSearch()">
                                 <option value="">Todos los estados</option>
                                 <option value="normal">Stock Normal</option>
                                 <option value="low">Stock Bajo</option>
                             </select>
                         </div>
-                        
-                        <button class="search-submit-btn">
-                            <i class="fas fa-search"></i>
-                            Buscar Productos
-                        </button>
                     </div>
                 </div>
 
-                <div class="search-results">
-                    <div class="results-placeholder">
+                <div id="searchResultsContainer" class="search-results" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 20px; background: #f8f9fa;">
+                    <div class="results-placeholder" style="grid-column: 1 / -1;">
                         <i class="fas fa-search"></i>
-                        <h4>Realiza una búsqueda para ver resultados</h4>
-                        <p>Usa los filtros arriba para encontrar productos específicos</p>
+                        <h4>Esperando búsqueda...</h4>
+                        <p>Ingresa un término o selecciona filtros para ver resultados.</p>
                     </div>
                 </div>
             </div>

@@ -296,44 +296,56 @@ body {
     justify-content: center;
     border-radius: 8px;
 }
-
+/* ========== GRÁFICAS DINÁMICAS (NUEVO) ========== */
 .chart-bars {
     display: flex;
     align-items: flex-end;
-    justify-content: space-around;
+    /* Importante: flex-start para que empiece a la izquierda y permita scroll */
+    justify-content: flex-start; 
     width: 100%;
-    height: 100%;
-    gap: 15px;
-    padding: 0 20px;
+    height: 100%; /* Asegura que use la altura disponible */
+    padding: 20px 10px 40px 10px; /* Padding inferior extra para etiquetas rotadas */
+    overflow-x: auto; /* Habilita scroll horizontal si hay muchas barras */
+    overflow-y: hidden;
+    /* Estilizando la barra de scroll */
+    scrollbar-width: thin;
+    scrollbar-color: #bdc3c7 #f0f0f0;
 }
 
-.chart-bars .bar {
-    width: 60px;
-    border-radius: 5px 5px 0 0;
+/* Estilo para Webkit (Chrome, Edge, Safari) */
+.chart-bars::-webkit-scrollbar {
+    height: 8px;
+}
+.chart-bars::-webkit-scrollbar-thumb {
+    background-color: #bdc3c7;
+    border-radius: 4px;
+}
+
+/* El contenedor individual de cada barra (creado por JS) */
+.bar-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     align-items: center;
-    color: white;
-    font-weight: bold;
-    padding: 5px;
+    justify-content: flex-end;
+    height: 100%;
+    margin-right: 15px; /* Espacio entre barras */
+    min-width: 50px; /* Ancho mínimo para que no se aplasten */
+    flex-shrink: 0; /* Evita que se encojan si falta espacio */
+}
+
+/* La barra en sí */
+.chart-bars .bar {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* Animación suave */
     position: relative;
-    transition: height 0.5s ease;
+    min-height: 5px; /* Siempre muestra al menos un poquito */
 }
 
-.chart-bars .bar span {
-    font-size: 0.8rem;
-    margin-bottom: 5px;
-    text-align: center;
+.chart-bars .bar:hover {
+    filter: brightness(1.1); /* Brillo al pasar el mouse */
+    cursor: pointer;
 }
-
-.value-chart {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
-}
-
 .value-bar {
     display: flex;
     align-items: center;
@@ -492,37 +504,64 @@ body {
 }
 
 .table-container {
-    overflow-x: auto;
+    width: 100%;
+    overflow-x: auto; /* Mantiene scroll si la pantalla es muy chica */
+    background: white;
+    border-radius: 8px;
 }
 
 table {
-    width: 100%;
+    width: 100%; /* Fuerza a ocupar todo el contenedor */
     border-collapse: collapse;
+    table-layout: auto; /* Permite que las columnas se adapten */
+}
+
+/* Encabezados y celdas */
+table th, table td {
+    padding: 15px 20px; /* Más espacio interno para que se vea aireado */
+    text-align: left;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+/* Hacemos que la columna NOMBRE (ahora la 1ra) sea la principal y se estire */
+table th:nth-child(1), 
+table td:nth-child(1) {
+    width: 40%; /* Ocupará el 40% del ancho total aprox */
+    min-width: 250px; /* Evita que se aplaste */
+}
+
+/* Ajustes para las otras columnas para que no queden pegadas */
+table th:nth-child(2), table td:nth-child(2), /* Categoría */
+table th:nth-child(3), table td:nth-child(3) { /* Proveedor */
+    width: 15%;
+}
+
+table th:nth-child(4), table td:nth-child(4), /* Precio */
+table th:nth-child(5), table td:nth-child(5), /* Stock */
+table th:nth-child(6), table td:nth-child(6) { /* Mínimo */
+    width: 8%;
+    text-align: center; /* Centrar números */
+}
+
+table th:last-child, 
+table td:last-child {
+    text-align: center;
+    width: 5%;
+}
+
+/* Efecto hover en filas */
+table tbody tr:hover {
+    background-color: #f8f9fa;
+    transition: background 0.2s;
 }
 
 table thead {
     background: #f8f9fa;
+    position: sticky; /* Cabecera pegajosa */
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
-
-table th {
-    padding: 15px;
-    text-align: left;
-    color: #2c3e50;
-    font-weight: 600;
-    border-bottom: 2px solid #ecf0f1;
-    white-space: nowrap;
-}
-
-table td {
-    padding: 15px;
-    border-bottom: 1px solid #ecf0f1;
-    color: #34495e;
-}
-
-table tbody tr:hover {
-    background: #f8f9fa;
-}
-
 .btn-edit, .btn-delete {
     background: none;
     border: none;
@@ -1448,11 +1487,15 @@ input:checked + .slider:before {
 }
 
 .alert-item {
-    border: 1px solid #ecf0f1;
-    border-radius: 8px;
-    padding: 15px;
-    background: white;
-    transition: transform 0.3s, box-shadow 0.3s;
+    /* ... tus estilos actuales ... */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Asegurar que el botón de reabastecer no se pegue al texto */
+.alert-action-btn {
+    margin-top: 15px;
 }
 
 .alert-item:hover {
@@ -1633,23 +1676,12 @@ input:checked + .slider:before {
     transition: height 0.5s ease;
 }
 
-.chart-bars .bar:nth-child(1) { background: #3498db; height: 100%; } /* Periféricos */
-.chart-bars .bar:nth-child(2) { background: #2ecc71; height: 24%; } /* Electrónica */
-.chart-bars .bar:nth-child(3) { background: #e74c3c; height: 5%; } /* Impresión */
-.chart-bars .bar:nth-child(4) { background: #f39c12; height: 19%; } /* Redes */
-.chart-bars .bar:nth-child(5) { background: #9b59b6; height: 2%; } /* Almacenamiento */
-
 .chart-bars .bar span {
     font-size: 0.8rem;
     margin-bottom: 5px;
     text-align: center;
 }
 
-/* Ajustar el valor total del inventario */
-.value-chart .value-bar:nth-child(1) .bar-fill { width: 80%; } /* Electrónica */
-.value-chart .value-bar:nth-child(2) .bar-fill { width: 17%; } /* Periféricos */
-.value-chart .value-bar:nth-child(3) .bar-fill { width: 1%; } /* Impresión */
-.value-chart .value-bar:nth-child(4) .bar-fill { width: 2%; } /* Redes */
 
 /* Actualizar estadísticas de stock */
 .category-stats {
